@@ -52,7 +52,7 @@ a {
 .accordion .link {
     cursor: pointer;
     display: block;
-    padding: 15px 15px 15px 42px;
+    padding: 15px 15px 7px 12px;
     color: #4D4D4D;
     font-size: 14px;
     font-weight: 700;
@@ -76,6 +76,14 @@ a {
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease
+}
+
+#icon {
+    margin-bottom: 2%;
+    margin-right: 10px;
+    height:7%; 
+    width: 7%;
+
 }
 
 .accordion li i.fa-chevron-down {

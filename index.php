@@ -45,9 +45,6 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top" style="position: relative;">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
 	  <img src="./Imagens/logo.png" id="fem4">
 	  <div class="collapse navbar-collapse" id="navbarExample01" style="margin-left: 2%;">
         <h4 style="color: white;">Plataforma Digital Georreferenciada</h4>
@@ -88,7 +85,7 @@
 
 			<ul id="accordion" class="accordion">
 				<li>
-					<div class="link"><i class="fa fa-laptop"></i>Cartografia<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/cartografia.png" id="icon">Cartografia<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input" onclick="camadas(limitesMunic)" checked> Limites Municipais</li>
 						<li><input type="checkbox" id="input" onclick="camadas(localidade)"> Localidades </li>
@@ -96,7 +93,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-tv"></i>Infraestrutura<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/infraestrutura.png" id="icon">Infraestrutura<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -104,7 +101,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-mobile"></i>Indicadores Sociais<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/indicadores_sociais.png" id="icon">Indicadores Sociais<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -112,7 +109,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Indicadores Urbanos<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/indicadores_urbanos.png" id="icon">Indicadores Urbanos<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -120,7 +117,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/atividade&projeto.png" id="icon">Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -128,7 +125,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Setores Governamentais<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/setores_governamentais.png" id="icon">Setores Governamentais<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -136,7 +133,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Programas Sociais<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/programas_sociais.png" id="icon">Programas Sociais<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -144,7 +141,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Saúde<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/saude.png" id="icon">Saúde<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -152,7 +149,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Educação<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/indicadores_urbanos.png" id="icon">Educação<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -160,7 +157,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Segurança Pública<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/segurança.png" id="icon">Segurança Pública<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -168,7 +165,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Economia<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/economia.png" id="icon">Economia<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -176,7 +173,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Financeiro<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/financeiro.png" id="icon">Financeiro<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -184,7 +181,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Agricultura<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/agricultura.png" id="icon">Agricultura<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -192,7 +189,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Turismo<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/turismo.png" id="icon">Turismo<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -200,7 +197,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Geoserviços<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/geoserviços.png" id="icon">Geoserviços<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
@@ -208,7 +205,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><i class="fa fa-globe"></i>Instituições Privadas<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/instituicoes_privadas.png" id="icon">Instituições Privadas<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>

@@ -71,7 +71,7 @@ if(window.screen.width > "500"){
     maxZoom: 19,
     attribution: '© OpenStreetMap'
     }).addTo(map);
-
+/*
     var printer = L.easyPrint({
         tileLayer: osm,
         sizeModes: ['Current'],
@@ -80,7 +80,7 @@ if(window.screen.width > "500"){
         hideControlContainer: true
   }).addTo(map);
 
-
+*/
   var sidebar = L.control.sidebar({
     autopan: false,       // whether to maintain the centered map point when opening the sidebar
     closeButton: true,    // whether t add a close button to the panes
