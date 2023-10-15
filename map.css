@@ -23,7 +23,7 @@ img#fem4 {
 
 
 ul.accordion {
-    list-style-type: none
+    list-style-type: none;
 }
 
 ul.submenu {
@@ -31,7 +31,7 @@ ul.submenu {
 }
 
 ul.accordion li{
-    margin-left: -10%;
+    margin-left: -12%;
 }
 
 a {
@@ -114,7 +114,7 @@ a {
 }
 
 .submenu li {
-    padding: 2%;
+    padding: 2% 0 0 7%;
 }
 
 .submenu a {
@@ -133,3 +133,78 @@ a {
     color: #FFF
 }
 
+
+
+
+/*
+
+
+a#menu2{
+    position: absolute;
+    z-index: 10;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.4em;
+    padding-left: 22px;
+    display: block;
+    width: 160px;
+    height: 40px;
+    text-decoration: none;
+  }
+
+  /*ao passar o mouse sobre nosso link
+  a#menu2:hover{
+    color: yellowgreen;
+    border-right: 2px solid #fff;
+  }
+
+  .menu1{
+    z-index: 10000;
+    position: absolute;
+    list-style: none;
+    right: 0;
+    width: 182px;
+    padding: 40px 0;
+    margin: 20px;
+  }
+  .menu1:before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    background: #5b9780;
+    height: 100%;
+    width: 182px;
+    margin-top: -40px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  .menu1 li{
+    height: 40px;
+    width: 100%;
+  }
+  .menu1 li .submenu1{
+    width: 152px;
+    height: 220px;
+    padding: 15px;
+    margin-top: 16px;
+    background: yellowgreen;
+    overflow: hidden;
+    color: #fff;
+    text-align: left;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: 1s right,1s width,1s opacity;
+    transition: 1s right, 1s width, 1s opacity;
+    border-top-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+  }
+  .menu1 li:active .submenu1{
+    right: 182px;
+    opacity: 1;
+    width: 276px;
+  }
+  */

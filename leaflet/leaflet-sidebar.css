@@ -121,7 +121,7 @@
       min-width: 420px; } }
 
 .leaflet-sidebar-header {
-  margin: -10px -20px 0;
+  margin: -10px -20px -14px;
   height: 40px;
   padding: 0 20px;
   line-height: 40px;
