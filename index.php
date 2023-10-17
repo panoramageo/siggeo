@@ -177,7 +177,7 @@
 					</ul>
 				</li>
 				<li>
-					<div class="link"><img src="./icons/indicadores_urbanos.png" id="icon">Educação<i class="fa fa-chevron-down"></i></div>
+					<div class="link"><img src="./icons/educacao.png" id="icon">Educação<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
 						<li><input type="checkbox" id="input"> HP Envy</li>
