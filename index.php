@@ -46,6 +46,9 @@
 
     <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
 
+	<!-- MarkerCluster -->
+
+	<script src="leaflet/leaflet-heat.js"></script>
 
 
 	<!-- Cartografia - Camadas -->
@@ -149,7 +152,8 @@
 					<ul class="submenu">
 						<li><input type="checkbox" id="input" onclick="camadas(markersArmJackson)"> Armadilha - Jackson</li>
 						<li><input type="checkbox" id="input" onclick="camadas(markersArmMcphail)"> Armadilha - Mcphail</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor1)"> Armadilha - Jackson (Calor)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor1)"> Armadilha - Mcphail (Calor)</li>
 					</ul>
 				</li>
 				<li>
