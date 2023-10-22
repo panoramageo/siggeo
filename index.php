@@ -349,7 +349,7 @@
 		<div class="row row-cols-1 row-cols-md-2 g-4" style="padding: 2% 4% 1% 0;">
 			<div class="col">
 				<div class="card" style="border:none">
-				<img type="button" src="./imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(osm)" style="width: 50%;height: 50%;">
+				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(osm)" style="width: 50%;height: 50%;">
 				<div class="card-body">
 					<h6 class="card-title">OMS</h6>
 				</div>
@@ -357,7 +357,7 @@
 			</div>
 			<div class="col">
 				<div class="card" style="border:none">
-				<img type="button" src="./imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(satelite)" style="width: 50%;height: 50%;">
+				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(satelite)" style="width: 50%;height: 50%;">
 				<div class="card-body">
 					<h6 class="card-title">Satélite</h6>
 				</div>
@@ -365,7 +365,7 @@
 			</div>
 			<div class="col">
 				<div class="card" style="border:none">
-				<img type="button" src="./imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(googleSat)" style="width: 50%;height: 50%;">
+				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(googleSat)" style="width: 50%;height: 50%;">
 				<div class="card-body">
 					<h6 class="card-title">Google Satélite</h6>
 				</div>
@@ -373,7 +373,7 @@
 			</div>
 			<div class="col">
 				<div class="card" style="border:none">
-				<img type="button" src="./imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(planet)" style="width: 50%;height: 50%;">
+				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(planet)" style="width: 50%;height: 50%;">
 				<div class="card-body">
 					<h6 class="card-title">Google Terrain</h6>
 				</div>

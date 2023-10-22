@@ -182,7 +182,7 @@ var armJackson1 = L.geoJSON(armJackson, {
            //selPoly.push(layer.feature);
            a = '<p><b>Código:</b> '+layer.feature.properties.n_arm_jack+'<br><b>Bairro:</b> '+layer.feature.properties.bairro+'<br><b>Região:</b> '+layer.feature.properties.regiao+'<br><b>Endereço:</b> '+layer.feature.properties.endereco+'<br><b>Hospedeiro:</b> '+layer.feature.properties.hosp_jack+'<br><b>Status:</b> '+layer.feature.properties.estado_veg+'<br><b>Mosca - Macho:</b> '+layer.feature.properties.jackson_m+'<br><b>Latitude:</b> '+layer.feature.properties.lat_jack+'<br><b>Longitude:</b> '+layer.feature.properties.long_jack+'<br><b>Data:</b> '+layer.feature.properties.data_moni+'<br><b>Observação:</b> '+layer.feature.properties.obs+'<br><b>Responsável:</b> '+layer.feature.properties.responsav+'<br><b>Período:</b> '+layer.feature.properties.periodo+'</p>';
            b = 'Armadilha - Jackson';
-           c = 'http://sig.panoramageo.com.br/imagens/59152_jackson.png'
+           c = './Imagens/59152_jackson.png'
        }
      });
 
@@ -196,7 +196,7 @@ var armJackson1 = L.geoJSON(armJackson, {
           //selPoly.push(layer.feature);
           a = '<p><b>Código:</b> '+layer.feature.properties.n_arm_mcph+'<br><b>Bairro:</b> '+layer.feature.properties.bairro+'<br><b>Região:</b> '+layer.feature.properties.regiao+'<br><b>Endereço:</b> '+layer.feature.properties.endereco+'<br><b>Hospedeiro:</b> '+layer.feature.properties.hosp_mcph+'<br><b>Status:</b> '+layer.feature.properties.estado_veg+'<br><b>Mosca - Macho:</b> '+layer.feature.properties.mcphail_m+'<br><b>Mosca - Fêmea:</b> '+layer.feature.properties.mcphail_f+'<br><b>Latitude:</b> '+layer.feature.properties.lat_mcph+'<br><b>Longitude:</b> '+layer.feature.properties.long_mcph+'<br><b>Data:</b> '+layer.feature.properties.data_moni+'<br><b>Observação:</b> '+layer.feature.properties.obs+'<br><b>Responsável:</b> '+layer.feature.properties.responsav+'<br><b>Período:</b> '+layer.feature.properties.periodo+'</p>';
           b = 'Armadilha - Mcphail';
-          c = 'http://sig.panoramageo.com.br/imagens/176934-12517311.jpg'
+          c = './Imagens/176934-12517311.jpg'
       }
     });
    
