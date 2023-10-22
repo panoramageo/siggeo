@@ -12,6 +12,13 @@ var armJackson1 = L.geoJSON(armJackson, {
   }
 }).on('click', onClick);
 
+armJackson1.on('mouseover', function(e) {
+      var popup = L.popup({offset: [2, -9]})
+      .setLatLng(e.latlng) 
+      .setContent(e.layer.feature.properties.n_arm_jack)
+      .openOn(map);
+});
+
   markersArmJackson.addLayer(armJackson1);
 
 
@@ -30,6 +37,13 @@ var armJackson1 = L.geoJSON(armJackson, {
       }
     }
   }).on('click', onClick);
+
+  armMcphail1.on('mouseover', function(e) {
+    var popup = L.popup({offset: [2, -9]})
+    .setLatLng(e.latlng) 
+    .setContent(e.layer.feature.properties.n_arm_mcph)
+    .openOn(map);
+  });
 
   markersArmMcphail.addLayer(armMcphail1);
 
@@ -125,45 +139,16 @@ var armJackson1 = L.geoJSON(armJackson, {
 
 
     function onClick(e) { 
-      console.log(1);
       lat = e.latlng.lat;
       lon = e.latlng.lng;
       ProcessClick(lat,lon)
     }
-  
-  
-  /*
-  
-  
-  
-    function clickMap (){
-  
-    var status2 = document.getElementsByName("input1");
-    var status = 0;
-    for (var i = 0; i < status2.length; i++) {
-      if (status2[i].checked === true) {
-        status = 1;
-        break;
-      }
-    }
-
-  
-      if(status === 1){
-        map.on('click', onClick);
-        console.log(0);
-      }else{
-        map.off('click', onClick);
-      }
-    
-     }
-*/
 
 
      var theMarker;
      var selPoly = [];
    
      function ProcessClick(lat,lon){
-      console.log(1);
      selPoly = [];
      
      if (theMarker != undefined) {

@@ -132,12 +132,21 @@ if(window.screen.width > "500"){
 
 */
 
-function camadas1(valor){
+function camadas1(valor, leg){
+
   if(map.hasLayer(valor)){
     map.removeLayer(valor);
     }
     else {
     map.addLayer(valor);
+    }
+
+    var display = document.getElementById(leg).style.display;
+  
+    if(display == "block"){
+        document.getElementById(leg).style.display = 'none';
+    }else{
+        document.getElementById(leg).style.display = 'block';
     }
 }
 

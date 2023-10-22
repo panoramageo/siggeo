@@ -65,6 +65,34 @@
 
 	<script src="./Camadas/Cartografia/localidades.geojson"></script>
 
+	<script src="./Camadas/Cartografia/estadosLimites.geojson"></script>
+
+	<script src="./Camadas/Cartografia/glebas.geojson"></script>
+
+	<script src="./Camadas/Cartografia/hidrografia2.geojson"></script>
+
+	<script src="./Camadas/Cartografia/hidroMassaDagua.geojson"></script>
+
+	<script src="./Camadas/Cartografia/projAssent.geojson"></script>
+
+	<script src="./Camadas/Cartografia/rodovias.geojson"></script>
+
+	<script src="./Camadas/Cartografia/sedesMunicipais.geojson"></script>
+
+	
+	<!-- Cartografia - Camadas -->
+
+	<script src="./Camadas/areasInstitucionais/areaInalienaveis.geojson"></script>
+
+	<script src="./Camadas/areasInstitucionais/arMil.geojson"></script>
+
+	<script src="./Camadas/areasInstitucionais/limiteTerraIndigena.geojson"></script>
+
+	<script src="./Camadas/areasInstitucionais/ucs_estaduais.geojson"></script>
+
+	<script src="./Camadas/areasInstitucionais/undConserFed.geojson"></script>
+
+	
 	<!-- Moscas - Camadas -->
 
 	<script src="./Camadas/Moscas/armadilha_jackson.geojson"></script>
@@ -72,7 +100,12 @@
 	<script src="./Camadas/Moscas/armadilha_mcphail.geojson"></script>
 
 
+<style>
 
+.leaflet-popup.leaflet-zoom-animated{
+	bottom: none;
+}
+</style>
 	
 
 
@@ -125,17 +158,32 @@
 		</h1>
 
 
-
 			<ul id="accordion" class="accordion">
 				<li>
 					<div class="link"><img src="./icons/cartografia.png" id="icon">Cartografia<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
-						<li><input type="checkbox" id="input" onclick="camadas(limitesMunic)" checked> Limites Municipais</li>
-						<li><input type="checkbox" id="input" onclick="camadas(localidade)"> Localidades </li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
+						<li><input type="checkbox" id="input" onclick="camadas1(estadosLimites, 'LimEst')" checked> Limites do Estado </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(limitesMunic, 'LimMun')" checked> Limites Municipais</li>
+						<li><input type="checkbox" id="input" onclick="camadas1(localidade, 'Loc')"> Localidades </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(sedesMunic, 'SedMun')"> Sedes Municipais </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(rodovia, 'rod')"> Rodovias </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(hidrografia, 'Hid')"> Trecho de Drenagem (1:100.000) </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(hidroMasDagua, 'HidMDag')"> Trecho de Massa D'Água </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(projAssent, 'ProjAss')"> Projetos de Assentamento </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(glebas, 'Gle')"> Glebas </li>
 					</ul>
 				</li>
 				<li>
+					<div class="link"><img src="./icons/indicadores_sociais.png" id="icon">Áreas Institucionais<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><input type="checkbox" id="input" onclick="camadas1(areaInalienaveis, 'AreaIna')"> Áreas Inalienáveis </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(areaMilit, 'AreaMil')"> Áreas Militares </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(limiteTerraIndigena, 'LimTerrIn')"> Terras Indígenas </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(undConserEst, 'UcEst')"> Unidade de Conservação Estadual </li>
+						<li><input type="checkbox" id="input" onclick="camadas1(undConserFed, 'UcFed')"> Unidade de Conservação Federal </li>
+					</ul>
+				</li>
+				<!--<li>
 					<div class="link"><img src="./icons/infraestrutura.png" id="icon">Infraestrutura<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
@@ -158,7 +206,7 @@
 						<li><input type="checkbox" id="input"> HP Envy</li>
 						<li><input type="checkbox" id="input"> Macbook Air</li>
 					</ul>
-				</li>
+				</li>-->
 				<li>
 					<div class="link"><img src="./icons/atividade&projeto.png" id="icon">Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
@@ -171,7 +219,7 @@
 						<li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor5)"> Armadilha - Mcphail (Calor - Fem)</li>
 					</ul>
 				</li>
-				<li>
+				<!--<li>
 					<div class="link"><img src="./icons/setores_governamentais.png" id="icon">Setores Governamentais<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><input type="checkbox" id="input"> Dell Acron</li>
@@ -258,7 +306,7 @@
 						<li><input type="checkbox" id="input"> HP Envy</li>
 						<li><input type="checkbox" id="input"> Macbook Air</li>
 					</ul>
-				</li>
+				</li>-->
 			</ul>
 
 		
@@ -271,11 +319,116 @@
 			<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 		</h1>
 
-		<div style="margin: 9% 5% 0 0">
+		<div style="margin: 9% 5% 0 0"> <!-- Começa -->
+		
+		
 
-			<div id="jacks" style="display: none; margin-bottom: 3%;">
-				<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px"> Armadilha - Jackson
+			<!-- Limites do Estado -->
+
+			<div id="LimEst" style="display: block;">
+				<img src="./Imagens/retangulo-arredondado.png" style="max-width:20px;max-height:20px"> Limites do Estado <hr>
+			</div>
+
+			<!-- Limites Municipais -->
+
+			<div id="LimMun" style="display: block;">
+				<img src="./Imagens/retangulo-arredondado.png" style="max-width:20px;max-height:20px"> Limites Municipais <hr>
+			</div>
+
+			<!-- Localidades -->
+
+			<div id="Loc" style="display: none;">
+				<img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px"> Localidades <hr>
             </div>
+
+			<!-- Sedes Municipais -->
+
+			<div id="SedMun" style="display: none;">
+				<div>Sedes Municipais</div>
+				<div style="margin-top: 8px;">
+					<img src="./Imagens/pin-de-localizacao-vermelho.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Capital
+				</div>
+				<div style="margin-top: 8px;">
+					<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Cidade
+				</div><hr>
+			</div>
+
+			<!-- Rodovias -->
+
+			<div id="rod" style="display: none;">
+				<div>Rodovias</div>
+				<div style="margin-top: 8px;">
+					<img src="./Imagens/linha-horizontal-red.png" style="max-width:20px;max-height:20px; margin-left:7px;margin-left:15px"> Federal
+				</div>
+				<div style="margin-top: 8px;">
+					<img src="./Imagens/linha-horizontal-32CD32.png" style="max-width:20px;max-height:20px;margin-left:7px;margin-left:15px;"> Estadual
+				</div>
+				<div style="margin-top: 8px;">
+					<img src="./Imagens/linha-horizontal.png" style="max-width:20px;max-height:20px;margin-left:15px"> Municipal
+				</div><hr>
+			</div>
+
+			<!-- Trecho de Drenagem (1:100.000) -->
+
+			<div id="Hid" style="display: none;">
+				<img src="./Imagens/linha-horizontal-00BFFF.png" style="max-width:20px;max-height:20px"> Trecho de Drenagem (1:100.000) <hr>
+            </div>
+
+			<!-- Trecho de Massa D'Água -->
+
+			<div id="HidMDag" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-00BFFF.png" style="max-width:20px;max-height:20px"> Trecho de Massa D'Água <hr>
+            </div>
+
+			<!-- Projetos de Assentamento -->
+
+			<div id="ProjAss" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-FFD700.png" style="max-width:20px;max-height:20px"> Projetos de Assentamento <hr>
+            </div>
+
+			<!-- Glebas -->
+
+			<div id="Gle" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-blue.png" style="max-width:20px;max-height:20px"> Glebas <hr>
+            </div>
+
+			<!-- Áreas Inalienáveis -->
+
+			<div id="AreaIna" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-808080.png" style="max-width:20px;max-height:20px"> Áreas Inalienáveis <hr>
+            </div>
+
+			<!-- Áreas Militares -->
+
+			<div id="AreaMil" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-FF8C00.png" style="max-width:20px;max-height:20px"> Áreas Militares <hr>
+            </div>
+
+			<!-- Terras Indígenas -->
+
+			<div id="LimTerrIn" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-red.png" style="max-width:20px;max-height:20px"> Terras Indígenas <hr>
+            </div>
+
+			<!-- Unidade de Conservação Estadual -->
+
+			<div id="UcEst" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-32CD32.png" style="max-width:20px;max-height:20px"> Unidade de Conservação Estadual <hr>
+            </div>
+			
+			<!-- Unidade de Conservação Federal -->
+
+			<div id="UcFed" style="display: none;">
+				<img src="./Imagens/retangulo-arredondado-006400.png" style="max-width:20px;max-height:20px"> Unidade de Conservação Federal <hr>
+            </div>
+
+			<!-- Armadilha - Jackson -->
+
+			<div id="jacks" style="display: none;">
+				<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px"> Armadilha - Jackson <hr>
+            </div>
+
+			<!-- Armadilha - Mcphail -->
 
 			<div id="mckph" style="display: none;">
                 <div>Armadilha - Mcphail</div>
@@ -290,10 +443,11 @@
                 </div>
                 <div style="margin-top: 8px;">
                   <img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Nulo
-                </div>
+                </div><hr>
             </div>
 
-		</div>
+			
+		</div><!-- termina -->
 
 	</div>
 <!--
@@ -532,7 +686,11 @@
 
 	<!-- Cartografia - geoJson -->
 
-	<script src="./Camadas/Cartografia/js/Cartografia.js"></script>
+	<script src="./Camadas/Cartografia/js/baseCartografica.js"></script>
+
+	<!-- Cartografia - geoJson -->
+
+	<script src="./Camadas/areasInstitucionais/js/areasInstitucionais.js"></script>
 
 	<!-- Moscas - geoJson -->
 
