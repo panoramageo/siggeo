@@ -162,13 +162,13 @@
 				<li>
 					<div class="link"><img src="./icons/atividade&projeto.png" id="icon">Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
-						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmJackson, armJackson1, 'jacks', 'jackson')"> Armadilha - Jackson <div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="jackson" onclick="desMarker(markersArmJackson, armJackson1)" disabled ></div></li>
-						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmMcphail, armMcphail1, 'mckph', 'mcphail')"> Armadilha - Mcphail <div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="mcphail" onclick="desMarker(markersArmMcphail, armMcphail1)" disabled ></div></li>
-						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor1)"> Armadilha - Jackson (Calor)</li>
-						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor3)"> Armadilha - Jackson (Calor - Masc)</li>
-						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor1)"> Armadilha - Mcphail (Calor)</li>
-						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor3)"> Armadilha - Mcphail (Calor - Masc)</li>
-						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor5)"> Armadilha - Mcphail (Calor - Fem)</li>
+						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmJackson, 'jacks', 'jackson')"> Armadilha - Jackson <!--<div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="jackson" onclick="desMarker(markersArmJackson, armJackson1)" disabled ></div>--></li>
+						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmMcphail, 'mckph', 'mcphail')"> Armadilha - Mcphail <!--<div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="mcphail" onclick="desMarker(markersArmMcphail, armMcphail1)" disabled ></div>--></li>
+						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor1,'', '')"> Armadilha - Jackson (Calor)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor3,'', '')"> Armadilha - Jackson (Calor - Masc)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor1,'', '')"> Armadilha - Mcphail (Calor)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor3,'', '')"> Armadilha - Mcphail (Calor - Masc)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor5,'', '')"> Armadilha - Mcphail (Calor - Fem)</li>
 					</ul>
 				</li>
 				<li>

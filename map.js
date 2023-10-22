@@ -134,16 +134,16 @@ if(window.screen.width > "500"){
 
 
 
-function camadas(valor, valor1, leg, check){
+function camadas(valor, leg, check){
 
-    if(map.hasLayer(valor) || map.hasLayer(valor1)){
-      map.removeLayer(valor);
-      map.removeLayer(valor1);
-      document.getElementById(check).checked = false;
-      }
-      else {
-      map.addLayer(valor);
-      }
+
+
+      if(map.hasLayer(valor)){
+        map.removeLayer(valor);
+        }
+        else {
+        map.addLayer(valor);
+        }
 /*
 
     if(map.hasLayer(valor)){
@@ -152,6 +152,15 @@ function camadas(valor, valor1, leg, check){
     else {
     map.addLayer(valor);
     }
+
+        if(map.hasLayer(valor) || map.hasLayer(valor1)){
+      map.removeLayer(valor);
+      map.removeLayer(valor1);
+      document.getElementById(check).checked = false;
+      }
+      else {
+      map.addLayer(valor);
+      }
 
     if(n === 1){
       valor.on("data:loaded", function (e){
