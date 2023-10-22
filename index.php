@@ -43,8 +43,16 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 
 	<!-- Turf -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
     <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+	<script src="https://unpkg.com/esri-leaflet@2.2.1/dist/esri-leaflet.js"
+      integrity="sha512-6BBVttv13OVrrUSoGmy9/aIVHateyIEGFaQxqnzCgXT9LNCAQ1Cxxj43R6Eq0ynydS7a7bLLfmEWwXFiO6lW2g=="
+      crossorigin=""></script>
 
 	<!-- MarkerCluster -->
 
@@ -62,6 +70,10 @@
 	<script src="./Camadas/Moscas/armadilha_jackson.geojson"></script>
 
 	<script src="./Camadas/Moscas/armadilha_mcphail.geojson"></script>
+
+
+
+	
 
 
 </head>
@@ -150,10 +162,13 @@
 				<li>
 					<div class="link"><img src="./icons/atividade&projeto.png" id="icon">Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
-						<li><input type="checkbox" id="input" onclick="camadas(markersArmJackson)"> Armadilha - Jackson</li>
-						<li><input type="checkbox" id="input" onclick="camadas(markersArmMcphail)"> Armadilha - Mcphail</li>
+						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmJackson, armJackson1, 'jacks', 'jackson')"> Armadilha - Jackson <div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="jackson" onclick="desMarker(markersArmJackson, armJackson1)" disabled ></div></li>
+						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmMcphail, armMcphail1, 'mckph', 'mcphail')"> Armadilha - Mcphail <div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="mcphail" onclick="desMarker(markersArmMcphail, armMcphail1)" disabled ></div></li>
 						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor1)"> Armadilha - Jackson (Calor)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armJackson_calor3)"> Armadilha - Jackson (Calor - Masc)</li>
 						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor1)"> Armadilha - Mcphail (Calor)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor3)"> Armadilha - Mcphail (Calor - Masc)</li>
+						<li><input type="checkbox" id="input" onclick="camadas(armMcphail_calor5)"> Armadilha - Mcphail (Calor - Fem)</li>
 					</ul>
 				</li>
 				<li>
@@ -256,6 +271,30 @@
 			<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
 		</h1>
 
+		<div style="margin: 9% 5% 0 0">
+
+			<div id="jacks" style="display: none; margin-bottom: 3%;">
+				<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px"> Armadilha - Jackson
+            </div>
+
+			<div id="mckph" style="display: none;">
+                <div>Armadilha - Mcphail</div>
+                <div style="margin-top: 8px;">
+					<img src="./Imagens/pin-de-localizacao-verde.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Macho/Fêmea
+                </div>
+                <div style="margin-top: 8px;">
+                  <img src="./Imagens/pin-de-localizacao-vermelho.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Macho
+                </div>
+                <div style="margin-top: 8px;">
+					<img src="./Imagens/pin-de-localizacao-vermelho1.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Fêmea
+                </div>
+                <div style="margin-top: 8px;">
+                  <img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Nulo
+                </div>
+            </div>
+
+		</div>
+
 	</div>
 <!--
 	<div class="leaflet-sidebar-pane" id="config">
@@ -274,7 +313,7 @@
 
 
   <!-- Jumbotron -->
-  <div id="sidebar1" class="leaflet-sidebar collapsed" style="border: none; right: 0;">
+  <div id="sidebar1" class="leaflet-sidebar collapsed" style="border: none; right: 0; height: 50%; margin-top: 7%;">
 
 <!-- nav tabs -->
 <div class="leaflet-sidebar-tabs" style="height: 0%;">
@@ -287,6 +326,7 @@
 		<li><a href="#salvar" role="tab"><img src="./icon_menu_lado_direito/salvar_map1.png" style="width: 55%;height: 55%;"></a></li>
 		<li><a href="#imprimir" role="tab"><img src="./icon_menu_lado_direito/imprimir1.png" style="width: 50%;height: 50%;"></a></li>
 		<li><a href="#compartilhar" role="tab"><img src="./icon_menu_lado_direito/compartilhar1.png" style="width: 50%;height: 50%;"></a></li>
+		<li><a role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="./icon_menu_lado_direito/reports1.png" style="width: 50%;height: 50%;"></a></li>
 	</ul>
 
 	<!-- bottom aligned tabs 
@@ -298,7 +338,7 @@
 
 
 <!-- panel content -->
-<div class="leaflet-sidebar-content" style="margin-right: 0.5%; border-radius: 5px; height: 280px;">
+<div class="leaflet-sidebar-content" style="margin-right: 0.5%; border-radius: 5px; height: 320px;">
 	<div class="leaflet-sidebar-pane" id="mapas">
 		<h1 class="leaflet-sidebar-header">
 			Mapas Base
@@ -333,7 +373,7 @@
 			</div>
 			<div class="col">
 				<div class="card" style="border:none">
-				<img type="button" src="./imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(googleTerrain)" style="width: 50%;height: 50%;">
+				<img type="button" src="./imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(planet)" style="width: 50%;height: 50%;">
 				<div class="card-body">
 					<h6 class="card-title">Google Terrain</h6>
 				</div>
@@ -356,7 +396,7 @@
 		<h1 class="leaflet-sidebar-header">
 			Draw Mapas
 			<span class="leaflet-sidebar-close"></span>
-		</h1>
+		</h1>		
 
 	</div>
 
@@ -393,6 +433,17 @@
 	</div>
 
 </div>
+</div>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="z-index:100000; width: 100%;">
+  <div class="offcanvas-header" style="background-color: blue">
+    <h4 class="offcanvas-title" id="offcanvasRightLabel" style="color: white;">Gráficos</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" style="padding: 2%;">
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDYwYTdmMTQtNmExZi00YzJmLWFmZDEtNmU5MzU4MTIyMTljIiwidCI6IjhlMWM3NzUyLWEyMWMtNGRjYy1iMTk5LTYyZmM2MDdiMjI3MiJ9" style="height:100%; width: 100%;"></iframe>
+  </div>
 </div>
 
 <!--
@@ -486,6 +537,39 @@
 	<!-- Moscas - geoJson -->
 
 	<script src="./Camadas/Moscas/js/moscas.js"></script>
+
+
+
+
+
+
+
+
+    <!--- Código - Modal para mostrar detalhes da área do projeto e monitoramento -->
+
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="text" id="text1"></div>
+            <div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          </div>
+		  <div class="img" id="img1" style="padding: 3%;">
+			
+		  </div>
+          <div class="modal-body" id="aaa" >
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

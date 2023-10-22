@@ -1,3 +1,36 @@
+var redIcon = new L.Icon({
+  iconSize: [35, 35],
+  iconAnchor: [18, 27],
+  popupAnchor:  [1, -24],
+  iconUrl: './Imagens/pin-de-localizacao-vermelho.png'
+});
+var CinzaIcon = new L.Icon({
+  iconSize: [35, 35],
+  iconAnchor: [18, 27],
+  popupAnchor:  [1, -24],
+  iconUrl: './Imagens/pin-de-localizacao-cinza.png'
+});
+var RoxoIcon = new L.Icon({
+  iconSize: [35, 35],
+  iconAnchor: [18, 27],
+  popupAnchor:  [1, -24],
+  iconUrl: './Imagens/pin-de-localizacao-roxo.png'
+});
+
+var VerdeIcon = new L.Icon({
+  iconSize: [35, 35],
+  iconAnchor: [18, 27],
+  popupAnchor:  [1, -24],
+  iconUrl: './Imagens/pin-de-localizacao-verde.png'
+});
+var Vermelho1Icon = new L.Icon({
+  iconSize: [35, 35],
+  iconAnchor: [18, 27],
+  popupAnchor:  [1, -24],
+  iconUrl: './Imagens/pin-de-localizacao-vermelho1.png'
+});
+
+
 if(window.screen.width > "500"){
 
     var latit = 1.80054;
@@ -81,6 +114,12 @@ if(window.screen.width > "500"){
         subdomains:['mt0','mt1','mt2','mt3']
     });
 
+    var planet = L.tileLayer(
+      'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2023_09_mosaic/gmap/{z}/{x}/{y}.png?api_key=PLAKbd7d2f62a85349d3bdf30586d09e19f0',
+      {
+        id: 'global_monthly',
+      });
+
 
 /*
     var printer = L.easyPrint({
@@ -92,18 +131,20 @@ if(window.screen.width > "500"){
   }).addTo(map);
 
 */
-  var sidebar = L.control.sidebar({
-    autopan: true,       // whether to maintain the centered map point when opening the sidebar
-    closeButton: true,    // whether t add a close button to the panes
-    container: 'sidebar', // the DOM container or #ID of a predefined sidebar container that should be used
-    position: 'left',     // left or right
-}).addTo(map);
-
-var sidebar1 = L.control.sidebar('sidebar1', {position: 'right'}).addTo(map);
 
 
-function camadas(valor){
-    console.log(valor);
+
+function camadas(valor, valor1, leg, check){
+
+    if(map.hasLayer(valor) || map.hasLayer(valor1)){
+      map.removeLayer(valor);
+      map.removeLayer(valor1);
+      document.getElementById(check).checked = false;
+      }
+      else {
+      map.addLayer(valor);
+      }
+/*
 
     if(map.hasLayer(valor)){
     map.removeLayer(valor);
@@ -112,6 +153,42 @@ function camadas(valor){
     map.addLayer(valor);
     }
 
+    if(n === 1){
+      valor.on("data:loaded", function (e){
+        map.fitBounds(valor.getBounds());
+      });
+    }
+    */
+
+    var display = document.getElementById(leg).style.display;
+  
+    if(display == "block"){
+        document.getElementById(leg).style.display = 'none';
+    }else{
+        document.getElementById(leg).style.display = 'block';
+    }
+
+
+    var checkbox = document.getElementById(check);
+  
+    if(checkbox.disabled == true){
+      document.getElementById(check).disabled = false;
+    }else{
+      document.getElementById(check).disabled = true;
+    }
+
+}
+
+
+function desMarker(valor, valor1){
+  if(map.hasLayer(valor)){
+    map.removeLayer(valor);
+    map.addLayer(valor1);
+  }
+  else {
+    map.removeLayer(valor1);
+    map.addLayer(valor);
+  }
 }
 
 var groupLayMaps = L.layerGroup([]);
@@ -213,3 +290,13 @@ map.on('draw:created', function (e) {
 
 });
 
+var sidebar = L.control.sidebar({
+  autopan: true,       // whether to maintain the centered map point when opening the sidebar
+  closeButton: true,    // whether t add a close button to the panes
+  container: 'sidebar', // the DOM container or #ID of a predefined sidebar container that should be used
+  position: 'left',     // left or right
+}).addTo(map);
+
+var sidebar1 = L.control.sidebar('sidebar1', {
+position: 'right'
+}).addTo(map);
