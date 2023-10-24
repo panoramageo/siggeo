@@ -59,7 +59,7 @@ armJackson1.on('mouseover', function(e) {
       radius: 15,
       max: 11917,
       minOpacity: 1,
-      gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
+      gradient: {0.4: 'blue', 0.65: 'yellow', 1: 'red'}
   });
 
 
@@ -73,7 +73,7 @@ armJackson1.on('mouseover', function(e) {
       radius: 15,
       max: 11917,
       minOpacity: 1,
-      gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
+      gradient: {0.4: 'blue', 0.65: 'yellow', 1: 'red'}
   });
 
 
@@ -87,7 +87,7 @@ armJackson1.on('mouseover', function(e) {
         radius: 15,
         max: 11917,
         minOpacity: 1,
-        gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
+        gradient: {0.4: 'blue', 0.65: 'yellow', 1: 'red'}
     });
 
 
@@ -101,7 +101,7 @@ armJackson1.on('mouseover', function(e) {
         radius: 15,
         max: 11917,
         minOpacity: 1,
-        gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
+        gradient: {0.4: 'blue', 0.65: 'yellow', 1: 'red'}
     });
 
 
@@ -115,7 +115,7 @@ armJackson1.on('mouseover', function(e) {
         radius: 15,
         max: 11917,
         minOpacity: 1,
-        gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
+        gradient: {0.4: 'blue', 0.65: 'yellow', 1: 'red'}
     });
   
     function geoJson2heat(geojson, weight) {
