@@ -36,6 +36,12 @@
 
     <script src="leaflet/leaflet.markercluster.js"></script>
 
+	<!-- Barra de Escala -->
+
+	<link rel="stylesheet" href="leaflet/Leaflet.GraphicScale.min.css" />
+
+    <script src="leaflet/Leaflet.GraphicScale.min.js"></script>
+
 	<!-- Leaflet - Draw -->
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
@@ -111,540 +117,202 @@
 
 </head>
 
-<body class="easyPrint">
-
-<li class='sidebar-button' style="position: absolute;">
-  <a href="#" id="deviceconfig"><i class="fa fa-cogs"></i></a>
-</li>
-
-<header>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top" style="position: relative;">
-    <div class="container-fluid">
-	  <img src="./Imagens/logo.png" id="fem4">
-	  <div class="collapse navbar-collapse" id="navbarExample01" style="margin-left: 2%;">
-        <h4 style="color: white;">Plataforma Digital Georreferenciada</h4>
-      </div>
-    </div>
-  </nav>
-  <!-- Navbar -->
-
-  <!-- Jumbotron -->
-  <div id="sidebar" class="leaflet-sidebar collapsed">
-
-<!-- nav tabs -->
-<div class="leaflet-sidebar-tabs">
-	<!-- top aligned tabs -->
-	<ul role="tablist">
-		<li><a href="#home" role="tab"><img src="./icon_menu_lado_direito/camadas.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a href="#autopan" role="tab"><i class="fa fa-bars active"></i></a></li>
-		<!--<li><a href="#config" role="tab"><i class="fa fa-arrows"></i></a></li>-->
-	</ul>
-
-	<!-- bottom aligned tabs 
-	<ul role="tablist">
-		<li><a href="https://github.com/nickpeihl/leaflet-sidebar-v2"><i class="fa fa-github"></i></a></li>
-	</ul>-->
-</div>
+<body>
 
 
+<div class="mn">
+    <nav class="navbar navbar-dark bg-primary fixed-top" style="position: relative;">
+        <div class="container-fluid">
+		  <div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		  </div>
 
-<!-- panel content -->
-<div class="leaflet-sidebar-content">
-	<div class="leaflet-sidebar-pane" id="home">
-		<h1 class="leaflet-sidebar-header">
-			CAMADAS
-			<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
-		</h1>
+          
+          <div class="navbar-brand d-none d-lg-block d-print-block" style="display: flex; margin-right: 38%;">
+		  <img src="./Imagens/logo.png" id="fem">
+          <a style="color: white;"><b> Plataforma Digital Georreferenciada</b></a>
+		  <a class="navbar-brand d-lg-none" style="color: white; margin-top: 1%;"><b>SIG</b></a>
+          </div>
 
+		  <div  class="navbar-brand d-lg-none" style="display: flex; max-width: 50%; margin-right: 28%;">
+		  <img src="./Imagens/logo.png" id="fem1">
+		  <a style="color: white; margin-top: 1%;"><b>SIG</b></a>
+          </div>
+                          
+          <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header" style="background-color: blue;" id="menu">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="color:white">MENU</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <!--- Código - Aba Mapas e Temas -->
+
+            <div class="offcanvas-body">
 
 			<ul id="accordion" class="accordion">
-				<li>
-					<div class="link"><img src="./icons/cartografia.png" id="icon">Cartografia<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input" onclick="camadas1(estadosLimites, 'LimEst')" checked> Limites do Estado </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(limitesMunic, 'LimMun')" checked> Limites Municipais</li>
-						<li><input type="checkbox" id="input" onclick="camadas1(localidade, 'Loc')"> Localidades </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(sedesMunic, 'SedMun')"> Sedes Municipais </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(rodovia, 'rod')"> Rodovias </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(hidrografia, 'Hid')"> Trecho de Drenagem (1:100.000) </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(hidroMasDagua, 'HidMDag')"> Trecho de Massa D'Água </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(projAssent, 'ProjAss')"> Projetos de Assentamento </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(glebas, 'Gle')"> Glebas </li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/indicadores_sociais.png" id="icon">Áreas Institucionais<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input" onclick="camadas1(areaInalienaveis, 'AreaIna')"> Áreas Inalienáveis </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(areaMilit, 'AreaMil')"> Áreas Militares </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(limiteTerraIndigena, 'LimTerrIn')"> Terras Indígenas </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(undConserEst, 'UcEst')"> Unidade de Conservação Estadual </li>
-						<li><input type="checkbox" id="input" onclick="camadas1(undConserFed, 'UcFed')"> Unidade de Conservação Federal </li>
-					</ul>
-				</li>
-				<!--<li>
-					<div class="link"><img src="./icons/infraestrutura.png" id="icon">Infraestrutura<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/indicadores_sociais.png" id="icon">Indicadores Sociais<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/indicadores_urbanos.png" id="icon">Indicadores Urbanos<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>-->
-				<li>
-					<div class="link"><img src="./icons/atividade&projeto.png" id="icon">Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmJackson, armJackson1, 'jacks', 'jackson')"> Armadilha - Jackson <div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="jackson" onclick="desMarker(markersArmJackson, armJackson1)" disabled ></div></li>
-						<li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmMcphail, armMcphail1, 'mckph', 'mcphail')"> Armadilha - Mcphail <div class="form-check form-switch" style="float: right; margin: 2.5% 45% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="mcphail" onclick="desMarker(markersArmMcphail, armMcphail1)" disabled ></div></li>
-						<li><input type="checkbox" id="input" onclick="camadas1(armJackson_calor1)"> Armadilha - Jackson (Calor)</li>
-						<li><input type="checkbox" id="input" onclick="camadas1(armJackson_calor3)"> Armadilha - Jackson (Calor - Masc)</li>
-						<li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor1)"> Armadilha - Mcphail (Calor)</li>
-						<li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor3)"> Armadilha - Mcphail (Calor - Masc)</li>
-						<li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor5)"> Armadilha - Mcphail (Calor - Fem)</li>
-					</ul>
-				</li>
-				<!--<li>
-					<div class="link"><img src="./icons/setores_governamentais.png" id="icon">Setores Governamentais<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/programas_sociais.png" id="icon">Programas Sociais<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/saude.png" id="icon">Saúde<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/educacao.png" id="icon">Educação<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/segurança.png" id="icon">Segurança Pública<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/economia.png" id="icon">Economia<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/financeiro.png" id="icon">Financeiro<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/agricultura.png" id="icon">Agricultura<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/turismo.png" id="icon">Turismo<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/geoserviços.png" id="icon">Geoserviços<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>
-				<li>
-					<div class="link"><img src="./icons/instituicoes_privadas.png" id="icon">Instituições Privadas<i class="fa fa-chevron-down"></i></div>
-					<ul class="submenu">
-						<li><input type="checkbox" id="input"> Dell Acron</li>
-						<li><input type="checkbox" id="input"> HP Envy</li>
-						<li><input type="checkbox" id="input"> Macbook Air</li>
-					</ul>
-				</li>-->
-			</ul>
+				  <li>
+                      <div class="link"><img src="./icons/setores_governamentais.png" id="icon">Mapas<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="radio" name="mapa" id="input" onclick="mapas(osm)" checked> OMS</li>
+                          <li><input type="radio" name="mapa" id="input" onclick="mapas(satelite)"> Satélite</li>
+                          <li><input type="radio" name="mapa" id="input" onclick="mapas(googleSat)"> Google Satélite</li>
+						  <li><input type="radio" name="mapa" id="input" onclick="mapas(googleTerrain)"> Google Terrain</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/cartografia.png" id="icon">Cartografia<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input" onclick="camadas1(estadosLimites, 'LimEst')" checked> Limites do Estado </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(limitesMunic, 'LimMun')" checked> Limites Municipais</li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(localidade, 'Loc')"> Localidades </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(sedesMunic, 'SedMun')"> Sedes Municipais </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(rodovia, 'rod')"> Rodovias </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(hidrografia, 'Hid')"> Trecho de Drenagem (1:100.000) </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(hidroMasDagua, 'HidMDag')"> Trecho de Massa D'Água </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(projAssent, 'ProjAss')"> Projetos de Assentamento </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(glebas, 'Gle')"> Glebas </li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/indicadores_sociais.png" id="icon">Áreas Institucionais<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input" onclick="camadas1(areaInalienaveis, 'AreaIna')"> Áreas Inalienáveis </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(areaMilit, 'AreaMil')"> Áreas Militares </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(limiteTerraIndigena, 'LimTerrIn')"> Terras Indígenas </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(undConserEst, 'UcEst')"> Unidade de Conservação Estadual </li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(undConserFed, 'UcFed')"> Unidade de Conservação Federal </li>
+                      </ul>
+                  </li>
+                  <!--<li>
+                      <div class="link"><img src="./icons/infraestrutura.png" id="icon">Infraestrutura<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/indicadores_sociais.png" id="icon">Indicadores Sociais<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/indicadores_urbanos.png" id="icon">Indicadores Urbanos<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>-->
+                  <li>
+                      <div class="link"><img src="./icons/atividade&projeto.png" id="icon">Atividades/Projetos<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmJackson, armJackson1, 'jacks', 'jackson')"> Armadilha - Jackson <div class="form-check form-switch" style="float: right; margin: 2.5% 30% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="jackson" onclick="desMarker(markersArmJackson, armJackson1)" disabled ></div></li>
+                          <li><input type="checkbox" id="input" name="input1" onclick="camadas(markersArmMcphail, armMcphail1, 'mckph', 'mcphail')"> Armadilha - Mcphail <div class="form-check form-switch" style="float: right; margin: 2.5% 30% 0 0"><input class="form-check-input" type="checkbox" role="switch" id="mcphail" onclick="desMarker(markersArmMcphail, armMcphail1)" disabled ></div></li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(armJackson_calor1)"> Armadilha - Jackson (Calor)</li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(armJackson_calor3)"> Armadilha - Jackson (Calor - Masc)</li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor1)"> Armadilha - Mcphail (Calor)</li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor3)"> Armadilha - Mcphail (Calor - Masc)</li>
+                          <li><input type="checkbox" id="input" onclick="camadas1(armMcphail_calor5)"> Armadilha - Mcphail (Calor - Fem)</li>
+                      </ul>
+                  </li>
+                  <!--<li>
+                      <div class="link"><img src="./icons/programas_sociais.png" id="icon">Programas Sociais<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/saude.png" id="icon">Saúde<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/educacao.png" id="icon">Educação<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/segurança.png" id="icon">Segurança Pública<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/economia.png" id="icon">Economia<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/financeiro.png" id="icon">Financeiro<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/agricultura.png" id="icon">Agricultura<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/turismo.png" id="icon">Turismo<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/geoserviços.png" id="icon">Geoserviços<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>
+                  <li>
+                      <div class="link"><img src="./icons/instituicoes_privadas.png" id="icon">Instituições Privadas<i class="fa fa-chevron-down"></i></div>
+                      <ul class="submenu">
+                          <li><input type="checkbox" id="input"> Dell Acron</li>
+                          <li><input type="checkbox" id="input"> HP Envy</li>
+                          <li><input type="checkbox" id="input"> Macbook Air</li>
+                      </ul>
+                  </li>-->
+              </ul>
 
-		
-		
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="autopan">
-		<h1 class="leaflet-sidebar-header">
-			LEGENDAS
-			<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
-		</h1>
-
-		<div style="margin: 9% 5% 0 0"> <!-- Começa -->
-		
-		
-
-			<!-- Limites do Estado -->
-
-			<div id="LimEst" style="display: block;">
-				<img src="./Imagens/retangulo-arredondado.png" style="max-width:20px;max-height:20px"> Limites do Estado <hr>
-			</div>
-
-			<!-- Limites Municipais -->
-
-			<div id="LimMun" style="display: block;">
-				<img src="./Imagens/retangulo-arredondado.png" style="max-width:20px;max-height:20px"> Limites Municipais <hr>
-			</div>
-
-			<!-- Localidades -->
-
-			<div id="Loc" style="display: none;">
-				<img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px"> Localidades <hr>
+			  <div><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="margin-top: 5%;">Relatórios</button></div>
+<br>
+			  <div><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Legenda</button></div>
             </div>
-
-			<!-- Sedes Municipais -->
-
-			<div id="SedMun" style="display: none;">
-				<div>Sedes Municipais</div>
-				<div style="margin-top: 8px;">
-					<img src="./Imagens/pin-de-localizacao-vermelho.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Capital
-				</div>
-				<div style="margin-top: 8px;">
-					<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Cidade
-				</div><hr>
-			</div>
-
-			<!-- Rodovias -->
-
-			<div id="rod" style="display: none;">
-				<div>Rodovias</div>
-				<div style="margin-top: 8px;">
-					<img src="./Imagens/linha-horizontal-red.png" style="max-width:20px;max-height:20px; margin-left:7px;margin-left:15px"> Federal
-				</div>
-				<div style="margin-top: 8px;">
-					<img src="./Imagens/linha-horizontal-32CD32.png" style="max-width:20px;max-height:20px;margin-left:7px;margin-left:15px;"> Estadual
-				</div>
-				<div style="margin-top: 8px;">
-					<img src="./Imagens/linha-horizontal.png" style="max-width:20px;max-height:20px;margin-left:15px"> Municipal
-				</div><hr>
-			</div>
-
-			<!-- Trecho de Drenagem (1:100.000) -->
-
-			<div id="Hid" style="display: none;">
-				<img src="./Imagens/linha-horizontal-00BFFF.png" style="max-width:20px;max-height:20px"> Trecho de Drenagem (1:100.000) <hr>
-            </div>
-
-			<!-- Trecho de Massa D'Água -->
-
-			<div id="HidMDag" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-00BFFF.png" style="max-width:20px;max-height:20px"> Trecho de Massa D'Água <hr>
-            </div>
-
-			<!-- Projetos de Assentamento -->
-
-			<div id="ProjAss" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-FFD700.png" style="max-width:20px;max-height:20px"> Projetos de Assentamento <hr>
-            </div>
-
-			<!-- Glebas -->
-
-			<div id="Gle" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-blue.png" style="max-width:20px;max-height:20px"> Glebas <hr>
-            </div>
-
-			<!-- Áreas Inalienáveis -->
-
-			<div id="AreaIna" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-808080.png" style="max-width:20px;max-height:20px"> Áreas Inalienáveis <hr>
-            </div>
-
-			<!-- Áreas Militares -->
-
-			<div id="AreaMil" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-FF8C00.png" style="max-width:20px;max-height:20px"> Áreas Militares <hr>
-            </div>
-
-			<!-- Terras Indígenas -->
-
-			<div id="LimTerrIn" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-red.png" style="max-width:20px;max-height:20px"> Terras Indígenas <hr>
-            </div>
-
-			<!-- Unidade de Conservação Estadual -->
-
-			<div id="UcEst" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-32CD32.png" style="max-width:20px;max-height:20px"> Unidade de Conservação Estadual <hr>
-            </div>
-			
-			<!-- Unidade de Conservação Federal -->
-
-			<div id="UcFed" style="display: none;">
-				<img src="./Imagens/retangulo-arredondado-006400.png" style="max-width:20px;max-height:20px"> Unidade de Conservação Federal <hr>
-            </div>
-
-			<!-- Armadilha - Jackson -->
-
-			<div id="jacks" style="display: none;">
-				<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px"> Armadilha - Jackson <hr>
-            </div>
-
-			<!-- Armadilha - Mcphail -->
-
-			<div id="mckph" style="display: none;">
-                <div>Armadilha - Mcphail</div>
-                <div style="margin-top: 8px;">
-					<img src="./Imagens/pin-de-localizacao-verde.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Macho/Fêmea
-                </div>
-                <div style="margin-top: 8px;">
-                  <img src="./Imagens/pin-de-localizacao-vermelho.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Macho
-                </div>
-                <div style="margin-top: 8px;">
-					<img src="./Imagens/pin-de-localizacao-vermelho1.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Fêmea
-                </div>
-                <div style="margin-top: 8px;">
-                  <img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Nulo
-                </div><hr>
-            </div>
-
-			
-		</div><!-- termina -->
-
-	</div>
-<!--
-	<div class="leaflet-sidebar-pane" id="config">
-		<h1 class="leaflet-sidebar-header">
-			Settings
-		<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="messages">
-		<h1 class="leaflet-sidebar-header">Messages<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	</div>
--->
-</div>
-</div>
-<div id="map" style="position: absolute;"></div>
-
-
-  <!-- Jumbotron -->
-  <div id="sidebar1" class="leaflet-sidebar collapsed" style="border: none; right: 0; height: 50%; margin-top: 7%;">
-
-<!-- nav tabs -->
-<div class="leaflet-sidebar-tabs" style="height: 0%;">
-	<!-- top aligned tabs -->
-	<ul role="tablist" style="background-color: white; border-radius: 5px;">
-		<li><a href="#mapas" role="tab"><img src="./icon_menu_lado_direito/camadas.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a href="#uploads" role="tab"><img src="./icon_menu_lado_direito/uploads1.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a href="#draw" role="tab"><img src="./icon_menu_lado_direito/draw_map1.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a href="#downloads" role="tab"><img src="./icon_menu_lado_direito/downloads1.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a href="#salvar" role="tab"><img src="./icon_menu_lado_direito/salvar_map1.png" style="width: 55%;height: 55%;"></a></li>
-		<li><a href="#imprimir" role="tab"><img src="./icon_menu_lado_direito/imprimir1.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a href="#compartilhar" role="tab"><img src="./icon_menu_lado_direito/compartilhar1.png" style="width: 50%;height: 50%;"></a></li>
-		<li><a role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="./icon_menu_lado_direito/reports1.png" style="width: 50%;height: 50%;"></a></li>
-	</ul>
-
-	<!-- bottom aligned tabs 
-	<ul role="tablist">
-		<li><a href="https://github.com/nickpeihl/leaflet-sidebar-v2"><i class="fa fa-github"></i></a></li>
-	</ul>-->
-</div>
-
-
-
-<!-- panel content -->
-<div class="leaflet-sidebar-content" style="margin-right: 0.5%; border-radius: 5px; height: 320px;">
-	<div class="leaflet-sidebar-pane" id="mapas">
-		<h1 class="leaflet-sidebar-header">
-			Mapas Base
-			<span class="leaflet-sidebar-close"></span>
-		</h1>
-
-
-		<div class="row row-cols-1 row-cols-md-2 g-4" style="padding: 2% 4% 1% 0;">
-			<div class="col">
-				<div class="card" style="border:none">
-				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(osm)" style="width: 50%;height: 50%;">
-				<div class="card-body">
-					<h6 class="card-title">OMS</h6>
-				</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="border:none">
-				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(satelite)" style="width: 50%;height: 50%;">
-				<div class="card-body">
-					<h6 class="card-title">Satélite</h6>
-				</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="border:none">
-				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(googleSat)" style="width: 50%;height: 50%;">
-				<div class="card-body">
-					<h6 class="card-title">Google Satélite</h6>
-				</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="border:none">
-				<img type="button" src="./Imagens/maps.png" class="card-img-top" alt="..." onclick="mapas(planet)" style="width: 50%;height: 50%;">
-				<div class="card-body">
-					<h6 class="card-title">Google Terrain</h6>
-				</div>
-				</div>
-			</div>
-			</div>
-		
-		
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="uploads">
-		<h1 class="leaflet-sidebar-header">
-			Uploads
-			<span class="leaflet-sidebar-close"></span>
-		</h1>
-
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="draw">
-		<h1 class="leaflet-sidebar-header">
-			Draw Mapas
-			<span class="leaflet-sidebar-close"></span>
-		</h1>		
-
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="downloads">
-		<h1 class="leaflet-sidebar-header">
-			Downloads
-			<span class="leaflet-sidebar-close"></span>
-		</h1>
-
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="salvar">
-		<h1 class="leaflet-sidebar-header">
-			Salvar
-			<span class="leaflet-sidebar-close"></span>
-		</h1>
-
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="imprimir">
-		<h1 class="leaflet-sidebar-header">
-			Imprimir
-			<span class="leaflet-sidebar-close"></span>
-		</h1>
-
-	</div>
-
-	<div class="leaflet-sidebar-pane" id="compartilhar">
-		<h1 class="leaflet-sidebar-header">
-			Compartilhar
-			<span class="leaflet-sidebar-close"></span>
-		</h1>
-
-	</div>
-
-</div>
-</div>
-
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="z-index:100000; width: 100%;">
-  <div class="offcanvas-header" style="background-color: blue">
-    <h4 class="offcanvas-title" id="offcanvasRightLabel" style="color: white;">Gráficos</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" style="padding: 2%;">
-  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDYwYTdmMTQtNmExZi00YzJmLWFmZDEtNmU5MzU4MTIyMTljIiwidCI6IjhlMWM3NzUyLWEyMWMtNGRjYy1iMTk5LTYyZmM2MDdiMjI3MiJ9" style="height:100%; width: 100%;"></iframe>
-  </div>
-</div>
-
-<!--
-
-<ul class="menu1">
-      <li>
-        <a id="menu2"><img src="./icon_menu_lado_direito/reports1.png"></a>
-        <div class="submenu1">
-          <h1>HOME</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          </div>
         </div>
-      </li>
-      <li>
-        <a href="" id="menu2">Sobre</a>
-        <div class="submenu1">
-          <h1>SOBRE</h1>
-          <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </li>
-      <li>
-        <a href="" id="menu2">Notícias</a>
-        <div class="submenu1">
-          <h1>NOTÍCIAS</h1>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        </div>
-      </li>
-      <li>
-        <a href="" id="menu2">Esporte</a>
-        <div class="submenu1">
-          <h1>ESPORTE</h1>
-          <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa id est laborum.</p>
-        </div>
-      </li>
-      <li>
-        <a href="" id="menu2">Contato</a>
-        <div class="submenu1">
-          <h1>CONTATO</h1>
-          <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa id est laborum.</p>
-        </div>
-      </li>
-    </ul>
+      </nav>
+	  <div id="map"  style="position: absolute;"></div>
 
--->
-  <!-- Jumbotron -->
-</header>
-
-
+</div>
 
 
 
@@ -697,13 +365,167 @@
 	<script src="./Camadas/Moscas/js/moscas.js"></script>
 
 
+      <!--- Código - Gráficos -->
+
+  
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="z-index:100000; width: 100%;">
+    <div class="offcanvas-header" style="background-color: blue">
+      <h4 class="offcanvas-title" id="offcanvasRightLabel" style="color: white;">Gráficos</h4>
+      <button type="button" class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" style="padding: 2%;">
+    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDYwYTdmMTQtNmExZi00YzJmLWFmZDEtNmU5MzU4MTIyMTljIiwidCI6IjhlMWM3NzUyLWEyMWMtNGRjYy1iMTk5LTYyZmM2MDdiMjI3MiJ9" style="height:100%; width: 100%;"></iframe>
+    </div>
+  </div>
+
+
+      <!--- Código - Legenda -->
+
+
+	<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+	<div class="offcanvas-header" style="background-color: blue;">
+		<h5 class="offcanvas-title" id="offcanvasScrollingLabel" style="color: white;">Legenda</h5>
+		<button type="button" class="btn-close text-reset" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		
+	<div style="margin: 9% 5% 0 0"> <!-- Começa -->
+		
+		
+
+		<!-- Limites do Estado -->
+
+		<div id="LimEst" style="display: block;">
+			<img src="./Imagens/retangulo-arredondado.png" style="max-width:20px;max-height:20px"> Limites do Estado <hr>
+		</div>
+
+		<!-- Limites Municipais -->
+
+		<div id="LimMun" style="display: block;">
+			<img src="./Imagens/retangulo-arredondado.png" style="max-width:20px;max-height:20px"> Limites Municipais <hr>
+		</div>
+
+		<!-- Localidades -->
+
+		<div id="Loc" style="display: none;">
+			<img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px"> Localidades <hr>
+		</div>
+
+		<!-- Sedes Municipais -->
+
+		<div id="SedMun" style="display: none;">
+			<div>Sedes Municipais</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/pin-de-localizacao-vermelho.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Capital
+			</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Cidade
+			</div><hr>
+		</div>
+
+		<!-- Rodovias -->
+
+		<div id="rod" style="display: none;">
+			<div>Rodovias</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/linha-horizontal-red.png" style="max-width:20px;max-height:20px; margin-left:7px;margin-left:15px"> Federal
+			</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/linha-horizontal-32CD32.png" style="max-width:20px;max-height:20px;margin-left:7px;margin-left:15px;"> Estadual
+			</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/linha-horizontal.png" style="max-width:20px;max-height:20px;margin-left:15px"> Municipal
+			</div><hr>
+		</div>
+
+		<!-- Trecho de Drenagem (1:100.000) -->
+
+		<div id="Hid" style="display: none;">
+			<img src="./Imagens/linha-horizontal-00BFFF.png" style="max-width:20px;max-height:20px"> Trecho de Drenagem (1:100.000) <hr>
+		</div>
+
+		<!-- Trecho de Massa D'Água -->
+
+		<div id="HidMDag" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-00BFFF.png" style="max-width:20px;max-height:20px"> Trecho de Massa D'Água <hr>
+		</div>
+
+		<!-- Projetos de Assentamento -->
+
+		<div id="ProjAss" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-FFD700.png" style="max-width:20px;max-height:20px"> Projetos de Assentamento <hr>
+		</div>
+
+		<!-- Glebas -->
+
+		<div id="Gle" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-blue.png" style="max-width:20px;max-height:20px"> Glebas <hr>
+		</div>
+
+		<!-- Áreas Inalienáveis -->
+
+		<div id="AreaIna" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-808080.png" style="max-width:20px;max-height:20px"> Áreas Inalienáveis <hr>
+		</div>
+
+		<!-- Áreas Militares -->
+
+		<div id="AreaMil" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-FF8C00.png" style="max-width:20px;max-height:20px"> Áreas Militares <hr>
+		</div>
+
+		<!-- Terras Indígenas -->
+
+		<div id="LimTerrIn" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-red.png" style="max-width:20px;max-height:20px"> Terras Indígenas <hr>
+		</div>
+
+		<!-- Unidade de Conservação Estadual -->
+
+		<div id="UcEst" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-32CD32.png" style="max-width:20px;max-height:20px"> Unidade de Conservação Estadual <hr>
+		</div>
+		
+		<!-- Unidade de Conservação Federal -->
+
+		<div id="UcFed" style="display: none;">
+			<img src="./Imagens/retangulo-arredondado-006400.png" style="max-width:20px;max-height:20px"> Unidade de Conservação Federal <hr>
+		</div>
+
+		<!-- Armadilha - Jackson -->
+
+		<div id="jacks" style="display: none;">
+			<img src="./Imagens/pin-de-localizacao-roxo.png" style="max-width:20px;max-height:20px"> Armadilha - Jackson <hr>
+		</div>
+
+		<!-- Armadilha - Mcphail -->
+
+		<div id="mckph" style="display: none;">
+			<div>Armadilha - Mcphail</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/pin-de-localizacao-verde.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Macho/Fêmea
+			</div>
+			<div style="margin-top: 8px;">
+			  <img src="./Imagens/pin-de-localizacao-vermelho.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Macho
+			</div>
+			<div style="margin-top: 8px;">
+				<img src="./Imagens/pin-de-localizacao-vermelho1.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Fêmea
+			</div>
+			<div style="margin-top: 8px;">
+			  <img src="./Imagens/pin-de-localizacao-cinza.png" style="max-width:20px;max-height:20px;margin-left:15px;"> Nulo
+			</div><hr>
+		</div>
+
+		
+	</div><!-- termina -->
+
+
+	</div>
+	</div>
 
 
 
-
-
-
-    <!--- Código - Modal para mostrar detalhes da área do projeto e monitoramento -->
+    <!--- Código - Modal para mostrar popup mosca -->
 
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">

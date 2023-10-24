@@ -38,8 +38,13 @@ if(window.screen.width > "500"){
     var zm = 7;
     var map = L.map(document.getElementById('map'), {
       center: [latit, long],
-      zoom: zm
+      zoom: zm,
+      zoomControl: false
     });
+
+    L.control.zoom({
+      position: 'topright'
+    }).addTo(map);
   
     // Latitude e Longitude
   
@@ -72,15 +77,20 @@ if(window.screen.width > "500"){
     var zm = 6;
     var map = L.map(document.getElementById('map'), {
       center: [latit, long],
-      zoom: zm
+      zoom: zm,
+      zoomControl: false
     });
+
+    L.control.zoom({
+      position: 'topright'
+    }).addTo(map);
   
       // Latitude e Longitude
   
       var coordDIV = document.createElement('div');
       coordDIV.id = 'mapCoordDIV';
       coordDIV.style.position = 'absolute';
-      coordDIV.style.bottom = '2%';
+      coordDIV.style.bottom = '3%';
       coordDIV.style.left = '25%';
       coordDIV.style.zIndex = '900';
       coordDIV.style.backgroundColor = '#fff';
@@ -100,6 +110,20 @@ if(window.screen.width > "500"){
   
   }
 
+
+
+
+// Barra de escala
+
+var graphicScale = L.control.graphicScale({
+  position: 'bottomright',
+  doubleLine: false,
+  fill: 'fill',
+      showSubunits: false
+  }).addTo(map);
+
+
+
     var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -113,12 +137,6 @@ if(window.screen.width > "500"){
     var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
         subdomains:['mt0','mt1','mt2','mt3']
     });
-
-    var planet = L.tileLayer(
-      'https://tiles.planet.com/basemaps/v1/planet-tiles/global_monthly_2023_09_mosaic/gmap/{z}/{x}/{y}.png?api_key=PLAKbd7d2f62a85349d3bdf30586d09e19f0',
-      {
-        id: 'global_monthly',
-      });
 
 
 /*
@@ -148,6 +166,7 @@ function camadas1(valor, leg){
     }else{
         document.getElementById(leg).style.display = 'block';
     }
+    
 }
 
 
@@ -181,16 +200,17 @@ function camadas(valor, valor1, leg, check){
         map.fitBounds(valor.getBounds());
       });
     }
-    */
+    
+
+*/
 
     var display = document.getElementById(leg).style.display;
-  
+      
     if(display == "block"){
         document.getElementById(leg).style.display = 'none';
     }else{
         document.getElementById(leg).style.display = 'block';
     }
-
 
     var checkbox = document.getElementById(check);
   
@@ -233,7 +253,7 @@ var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 
 var drawControl = new L.Control.Draw({
-  position: 'topleft',
+  position: 'topright',
   draw: {
     polygon: {
       shapeOptions: {
@@ -313,13 +333,4 @@ map.on('draw:created', function (e) {
 
 });
 
-var sidebar = L.control.sidebar({
-  autopan: true,       // whether to maintain the centered map point when opening the sidebar
-  closeButton: true,    // whether t add a close button to the panes
-  container: 'sidebar', // the DOM container or #ID of a predefined sidebar container that should be used
-  position: 'left',     // left or right
-}).addTo(map);
 
-var sidebar1 = L.control.sidebar('sidebar1', {
-position: 'right'
-}).addTo(map);

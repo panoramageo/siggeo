@@ -1,5 +1,5 @@
 div#map{
-    height:660px; 
+    height:90%; 
     width: 100%;
 }
 
@@ -8,13 +8,26 @@ input#input{
     margin-top: 9px;
 }
 
-img#fem4 {
-    max-width:100px;
-    max-height:50px;
+img#fem {
+    max-width:5%;
+    max-height:5%;
+    margin-right: 2%;
+  }
+
+  img#fem1 {
+    max-width:17%;
+    max-height:5%;
+    margin-right: 5%;
   }
 
 
+  @media only screen and (max-width: 900px) {
+    
+    div#map{
+        height:93%; 
+    }
 
+}
 
 
 
@@ -30,7 +43,7 @@ ul.submenu {
 }
 
 ul.accordion li{
-    margin-left: -12%;
+    margin-left: -6%;
 }
 
 a {
@@ -41,7 +54,7 @@ a {
 .accordion {
     width: 100%;
     max-width: 584px;
-    margin: 20px auto 10px -10px;
+    margin: 0 auto 10px -10px;
     background: #FFF;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
