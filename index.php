@@ -374,8 +374,7 @@
       <button type="button" class="btn-close btn-close-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body" style="padding: 2%;">
-    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDYwYTdmMTQtNmExZi00YzJmLWFmZDEtNmU5MzU4MTIyMTljIiwidCI6IjhlMWM3NzUyLWEyMWMtNGRjYy1iMTk5LTYyZmM2MDdiMjI3MiJ9" style="height:100%; width: 100%;"></iframe>
-    </div>
+	<iframe title="Report Section" width="1000" height="1000" src="https://app.powerbi.com/view?r=eyJrIjoiYjQzOWQ5NzctYTM3ZS00N2I5LTg0MWItMjdmYzdlYjIxZmM0IiwidCI6IjhlMWM3NzUyLWEyMWMtNGRjYy1iMTk5LTYyZmM2MDdiMjI3MiJ9" frameborder="0" allowFullScreen="true" style="width: 100%;"></iframe>    </div>
   </div>
 
 
