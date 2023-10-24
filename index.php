@@ -369,9 +369,9 @@
 
   
 	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="z-index:100000; width: 100%;">
-    <div class="offcanvas-header" style="background-color: blue">
-      <h4 class="offcanvas-title" id="offcanvasRightLabel" style="color: white;">Gráficos</h4>
-      <button type="button" class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Close"></button>
+    <div class="offcanvas-header" style="background-color: blue; height: 5%;">
+      <h4 class="offcanvas-title" id="offcanvasRightLabel" style="color: white; font-size: 120%;">Gráficos</h4>
+      <button type="button" class="btn-close btn-close-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body" style="padding: 2%;">
     <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDYwYTdmMTQtNmExZi00YzJmLWFmZDEtNmU5MzU4MTIyMTljIiwidCI6IjhlMWM3NzUyLWEyMWMtNGRjYy1iMTk5LTYyZmM2MDdiMjI3MiJ9" style="height:100%; width: 100%;"></iframe>
